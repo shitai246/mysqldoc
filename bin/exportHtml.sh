@@ -31,7 +31,7 @@ do
 done
 echo "    </ul>"
 echo "  </nav>"
-echo "  <p class=\"pull-right\">last updated : `date '+%Y/%m/%d %H:%I:%S'`</p>"
+echo "  <p class=\"pull-right\">last updated : `date '+%Y/%m/%d %H:%M:%S'`</p>"
 
 if [ "${MYSQL_DB}" != "" ]; then
   echo "  <div class=\"container\">"
