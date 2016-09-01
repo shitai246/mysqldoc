@@ -46,7 +46,7 @@ if [ "${MYSQL_DB}" != "" ]; then
   for TABLE_NAME in ${TABLES};  
   do
     TABLE_STATUS=(`echo "show table status like '${TABLE_NAME}'" | ${MYSQL} ${MYSQL_DB} -s`)
-    echo "  <label id="${TABLE_NAME}">${TABLE_NAME} : ${TABLE_STATUS[17]}</label>"
+    echo "  <label id="${TABLE_NAME}">${TABLE_NAME} : ${TABLE_STATUS[${#TABLE_STATUS[@]}-1]}</label>"
     echo "  <table class=\"table table-bordered table-hover\">"
     echo "    <tr><th>カラム名</th><th>日本語</th><th>型</th><th>Null</th><th>Key</th><th>デフォルト値</th>"
     echo "show full columns from ${TABLE_NAME};" | ${MYSQL} ${MYSQL_DB} -s | sed 's/\\n//g' | awk -F'\t' '{print "<tr><td>"$1"</td><td>"$9"</td><td>"$2"</td><td>"$4"</td><td>"$5"</td><td>"$6"</td></tr>"}'
