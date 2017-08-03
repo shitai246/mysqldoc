@@ -11,6 +11,7 @@ echo "  <head>"
 echo "    <meta charset=\"utf-8\">"
 echo "    <title>Mysql DB Document : ${DB_NAME}</title>"  
 echo "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\" />"
+echo "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>"
 echo "    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>"
 echo "    <style>body { padding-top: 60px; }</style>"
 echo "  </head>"
@@ -19,7 +20,10 @@ echo "  <body>"
 
 echo "  <nav class=\"navbar navbar-default navbar-fixed-top\">"
 echo "    <a class=\"navbar-brand\" href=\"#\">${MYSQL_HOST} DB定義書</a>"
-echo "    <ul class=\"nav navbar-nav pull-right\">"
+echo "    <ul class=\"nav navbar-nav\">"
+echo "      <li class=\"dropdown\">"
+echo "        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"bottun\" aria-hapopup=\"true\" aria-expanded=\"false\">Database <span class=\"caret\"></span></a>"
+echo "          <ul class=\"dropdown-menu\">"
 for DATABASE in ${DATABASES};
 do
   if [ "${DATABASE}" == "${MYSQL_DB}" ]; then
@@ -57,7 +61,7 @@ if [ "${MYSQL_DB}" != "" ]; then
 
   # メニュー表示
   echo "  <div class=\"col-md-4\">"
-  echo "    <div class=\"list-group affix\">"
+  echo "    <div class=\"list-group\">"
   echo "      <span class=\"list-group-item list-group-item-info\">Tables</span>"
   for TABLE_NAME in ${TABLES};
   do
